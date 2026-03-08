@@ -259,7 +259,7 @@ def main():
 
         er = emotion_db.analyse(
             text,
-            top_k=15,                       # fetch more so dedup gives clean top 5
+            top_k=15,                      
             neg_p=sr["_neg_p"],
             neu_p=sr["_neu_p"],
             pos_p=sr["_pos_p"],

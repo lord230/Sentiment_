@@ -115,7 +115,7 @@ def build():
     polarities = [s[2] for s in EMOTION_SEEDS]
     intensities= [s[3] for s in EMOTION_SEEDS]
 
-    # ── Validate ─────────────────────────────────
+
     valid_pol = set(POLARITIES)
     valid_int = {"low", "medium", "high"}
     for i, (t, e, p, iv) in enumerate(zip(texts, emotions, polarities, intensities)):
@@ -123,7 +123,7 @@ def build():
         assert iv in valid_int, f"Seed {i}: invalid intensity '{iv}'"
         assert len(t.strip()) > 0, f"Seed {i}: empty text"
 
-    # ── Polarity distribution check ──────────────
+
     pol_counts = Counter(polarities)
     print(f"  Polarity distribution:")
     for p in POLARITIES:
@@ -132,20 +132,18 @@ def build():
         print(f"    {p:>10} : {n:>3} seeds  ({pct:.1f}%)")
     print()
 
-    # ── Embed all seeds ──────────────────────────
+
     encoder = ContextEncoder(config.MODEL_NAME, config.DEVICE)
-    all_vecs = encoder.encode(texts)                    # (N, 2H+4)
+    all_vecs = encoder.encode(texts)        
     dim = all_vecs.shape[1]
     print(f"\n  Vector dim : {dim}")
 
-    # ── Build one sub-index per polarity ─────────
-    # Group indices by polarity first
     pol_indices = defaultdict(list)
     for i, p in enumerate(polarities):
         pol_indices[p].append(i)
 
     meta = []
-    local_id_map = {p: 0 for p in POLARITIES}   # local index counter per sub-index
+    local_id_map = {p: 0 for p in POLARITIES}  
 
     for p in POLARITIES:
         idxs = pol_indices[p]
@@ -155,14 +153,12 @@ def build():
             faiss.write_index(empty_index, INDEX_PATHS[p])
             continue
 
-        vecs  = all_vecs[idxs]                          # (K, dim)
+        vecs  = all_vecs[idxs]      
         index = faiss.IndexFlatIP(dim)
         index.add(vecs)
         faiss.write_index(index, INDEX_PATHS[p])
         print(f"  [{p:>10}.index] : {index.ntotal} vectors  → {INDEX_PATHS[p]}")
 
-    # ── Save unified metadata ────────────────────
-    # local_index tracks per-polarity position for query → meta lookup
     pol_counter = defaultdict(int)
     for i in range(n_seeds):
         p = polarities[i]
@@ -184,7 +180,7 @@ def build():
         json.dump(meta, f, indent=2, ensure_ascii=False)
     print(f"\n  Metadata saved : {META_PATH}  ({len(meta)} entries)")
 
-    # ── Emotion distribution ─────────────────────
+
     emotion_counts = Counter(emotions)
     print(f"\n  Emotion distribution ({len(emotion_counts)} unique):")
     for emotion, count in sorted(emotion_counts.items()):
@@ -195,7 +191,7 @@ def build():
     print(f"{'=' * 58}\n")
 
 
-# -------------------------------------------------
+
 
 if __name__ == "__main__":
     build()

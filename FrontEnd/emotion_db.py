@@ -24,14 +24,11 @@ import config
 
 DB_DIR   = getattr(config, "VECTOR_DB_DIR", "EmotionDB")
 
-# One index file + one meta file per polarity
+
 POLARITIES   = ("positive", "negative", "neutral")
 INDEX_PATHS  = {p: os.path.join(DB_DIR, f"{p}.index") for p in POLARITIES}
 META_PATH    = os.path.join(DB_DIR, "emotions.meta")   # single shared metadata
 
-# Scale factor for the 4 scalar context features.
-# ×50 brings [0,1] scalars to ≈ the same L2 magnitude as
-# mean embedding norms (~5–15), giving them real influence.
 SCALAR_SCALE = 50
 
 INTENSITY_RANK = {"low": 1, "medium": 2, "high": 3}
@@ -182,7 +179,6 @@ class EmotionDB:
         with open(META_PATH, "r", encoding="utf-8") as f:
             self.meta = json.load(f)
 
-        # Build fast lookup: polarity → list of (original_idx, meta_entry)
         self._pol_entries = {p: [] for p in POLARITIES}
         for i, entry in enumerate(self.meta):
             self._pol_entries[entry["polarity"]].append((i, entry))
@@ -318,7 +314,6 @@ class EmotionDB:
         self.meta.append(new_entry)
         self._pol_entries[polarity].append((len(self.meta) - 1, new_entry))
 
-        # Persist both the sub-index and shared metadata
         faiss.write_index(self.indexes[polarity], INDEX_PATHS[polarity])
         with open(META_PATH, "w", encoding="utf-8") as f:
             json.dump(self.meta, f, indent=2, ensure_ascii=False)
