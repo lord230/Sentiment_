@@ -1,0 +1,101 @@
+============================================================
+Run started : 2026-03-07 20:11:39
+LR          : 3e-05
+Batch size  : 16
+Epochs      : 40
+Device      : cuda
+============================================================
+
+============================================================
+Run started : 2026-03-07 20:13:36
+LR          : 3e-05
+Batch size  : 32
+Epochs      : 40
+Device      : cuda
+============================================================
+
+============================================================
+Run started : 2026-03-07 20:25:58
+LR          : 3e-05
+Batch size  : 32
+Epochs      : 40
+Device      : cuda
+============================================================
+
+============================================================
+Run started : 2026-03-07 20:26:36
+LR          : 3e-05
+Batch size  : 32
+Epochs      : 40
+Device      : cuda
+============================================================
+
+============================================================
+Run started : 2026-03-07 20:27:47
+LR          : 3e-05
+Batch size  : 32
+Epochs      : 40
+Device      : cuda
+============================================================
+Epoch 1 | Loss 0.8475 | Sentiment Acc 0.6983 | Sarcasm Acc 0.6280 | Score 0.6772
+Epoch 2 | Loss 0.6499 | Sentiment Acc 0.7725 | Sarcasm Acc 0.6940 | Score 0.7489
+Epoch 3 | Loss 0.5700 | Sentiment Acc 0.8157 | Sarcasm Acc 0.7147 | Score 0.7854
+Epoch 4 | Loss 0.5223 | Sentiment Acc 0.8275 | Sarcasm Acc 0.7127 | Score 0.7930
+Epoch 5 | Loss 0.4803 | Sentiment Acc 0.8410 | Sarcasm Acc 0.7260 | Score 0.8065
+Epoch 6 | Loss 0.4408 | Sentiment Acc 0.8577 | Sarcasm Acc 0.7180 | Score 0.8158
+Epoch 7 | Loss 0.3978 | Sentiment Acc 0.8658 | Sarcasm Acc 0.7237 | Score 0.8232
+Epoch 8 | Loss 0.3562 | Sentiment Acc 0.8643 | Sarcasm Acc 0.7197 | Score 0.8209
+Epoch 9 | Loss 0.3093 | Sentiment Acc 0.8753 | Sarcasm Acc 0.7220 | Score 0.8293
+
+============================================================
+Run started : 2026-03-07 22:24:30
+LR          : 3e-05
+Batch size  : 64
+Epochs      : 40
+Device      : cuda
+============================================================
+Epoch 10 | Loss 0.4567 | Sentiment Acc 0.8828 | Sarcasm Acc 0.7274 | Score 0.8362
+Epoch 11 | Loss 0.4172 | Sentiment Acc 0.8927 | Sarcasm Acc 0.7298 | Score 0.8438
+Epoch 12 | Loss 0.3915 | Sentiment Acc 0.8970 | Sarcasm Acc 0.7314 | Score 0.8473
+Epoch 13 | Loss 0.3636 | Sentiment Acc 0.8967 | Sarcasm Acc 0.7248 | Score 0.8451
+Epoch 14 | Loss 0.3381 | Sentiment Acc 0.8963 | Sarcasm Acc 0.7264 | Score 0.8454
+Epoch 15 | Loss 0.3105 | Sentiment Acc 0.8963 | Sarcasm Acc 0.7208 | Score 0.8437
+Epoch 16 | Loss 0.2888 | Sentiment Acc 0.9002 | Sarcasm Acc 0.7204 | Score 0.8462
+
+============================================================
+Run started : 2026-03-07 23:53:10
+LR          : 3e-05
+Batch size  : 64
+Epochs      : 40
+Device      : cuda
+============================================================
+
+============================================================
+Run started : 2026-03-07 23:54:25
+LR          : 3e-05
+Batch size  : 64
+Epochs      : 40
+Device      : cuda
+============================================================
+Epoch 13 | Loss 0.3947 | Sentiment Acc 0.9000 | Sarcasm Acc 0.7393 | Score 0.8518
+Epoch 14 | Loss 0.3254 | Sentiment Acc 0.8920 | Sarcasm Acc 0.7408 | Score 0.8466
+
+============================================================
+Run started : 2026-03-08 10:47:17
+LR          : 3e-05
+Batch size  : 64
+Epochs      : 40
+Device      : cuda
+============================================================
+Epoch 14 | Loss 0.3145 | Sentiment Acc 0.9440 | Sarcasm Acc 0.7508 | Score 0.8860
+
+============================================================
+Run started : 2026-03-08 11:41:31
+LR          : 3e-05
+Batch size  : 64
+Epochs      : 40
+Device      : cuda
+============================================================
+Epoch 15 | Loss 0.2284 | Sentiment Acc 0.9380 | Sarcasm Acc 0.7354 | Score 0.8772
+Epoch 16 | Loss 0.2636 | Sentiment Acc 0.9430 | Sarcasm Acc 0.7552 | Score 0.8866
+Epoch 17 | Loss 0.2461 | Sentiment Acc 0.9370 | Sarcasm Acc 0.7595 | Score 0.8838

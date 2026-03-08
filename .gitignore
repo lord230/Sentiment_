@@ -1,0 +1,16 @@
+# Ignore specific folders
+dataset/
+__pycache__/
+
+# Ignore large model checkpoint files (GitHub 100MB limit)
+*.pt
+*.bin
+*.pth
+
+# Keep other generated or binary files if needed but generally ignore virtual environments
+venv/
+.env
+*.pyc
+
+# Allow specific useful directories (implied by just ignoring dataset)
+# However, Models/ CheckPoints/ and FrontEnd/ are kept because they are not ignored.
