@@ -18,6 +18,8 @@ To provide rich, nuanced emotional context beyond simple "Positive/Negative/Neut
 ## Training & Test Results
 Extensive training runs were conducted to optimize the model. According to the final training reports (`Results/training_results.txt`), the model demonstrated significant learning and consistency.
 
+![Training Curve](Results/training_curve.png)
+
 **Highlights from the latest optimal runs (Batch Size 64, LR 3e-05):**
 - **Epoch 14-17 Peak Performance:**
   - **Sentiment Accuracy:** ~94.40%
