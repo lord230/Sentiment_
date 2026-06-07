@@ -233,7 +233,6 @@ def train():
     model.to(config.DEVICE)
 
     # Freeze embeddings + first 6 transformer layers
-    # (keeps upper layers free to adapt both tasks)
     for param in model.encoder.embeddings.parameters():
         param.requires_grad = False
 
@@ -256,9 +255,6 @@ def train():
     # ── Loss functions ───────────────────────────
     sentiment_loss_fn = nn.CrossEntropyLoss()
 
-    # pos_weight counteracts class imbalance in sarcasm labels.
-    # Tweak this ratio based on your dataset's positive label fraction.
-    # e.g. if ~25 % of samples are sarcastic → pos_weight = 0.75 / 0.25 = 3.0
     sarcasm_loss_fn = nn.BCEWithLogitsLoss(
         pos_weight=torch.tensor([config.SARCASM_POS_WEIGHT]).to(config.DEVICE)
     )
@@ -288,7 +284,7 @@ def train():
         )
         print(f"Resumed at epoch {start_epoch} | best score so far: {best_score:.4f}")
 
-    best_model_path = checkpoint_path  # track so we can delete stale files
+    best_model_path = checkpoint_path  # to delete stale files
 
     # -------------------------------------------------
     # EPOCH LOOP
@@ -405,7 +401,7 @@ def train():
                 best_score,
             )
 
-            print(f"  ✓ New best model saved → {new_ckpt_path}")
+            print(f"best model saved → {new_ckpt_path}")
 
             # Remove the previous best to keep the directory clean
             if best_model_path and best_model_path != new_ckpt_path:
